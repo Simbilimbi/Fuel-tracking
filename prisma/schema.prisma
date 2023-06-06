@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model dispencement {
+  id         String   @id @default(cuid())
+  amount     Float
+  dispencement_type       DispencementType
+  created_at DateTime @default(now())
+}
+
+enum DispencementType {
+  DEPOSIT
+  WITHDRAWAL
+}
